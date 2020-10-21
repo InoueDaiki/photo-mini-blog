@@ -20,11 +20,14 @@
           <b-card-text>
             <b-input-group>
               <b-form-input
+                autofocus
                 placeholder="コメントを追加..."
-                class="p-0 border-0"
+                class="p-0 border-0 shadow-none"
               ></b-form-input>
               <b-input-group-append>
-                <b-button variant="link">投稿する</b-button>
+                <b-button variant="link text-decoration-none">
+                  投稿する
+                </b-button>
               </b-input-group-append>
             </b-input-group>
           </b-card-text>
