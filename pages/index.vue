@@ -1,7 +1,7 @@
 <template>
   <b-row align-h="center">
     <b-col cols="12" sm="6">
-      <b-card no-body>
+      <b-card v-for="(_, i) in 5" :key="i" no-body class="mb-3">
         <b-card-body class="py-2">
           <b-card-text>
             <strong>ユーザ名</strong>
@@ -25,7 +25,6 @@
           <b-card-text>
             <b-input-group>
               <b-form-input
-                autofocus
                 placeholder="コメントを追加..."
                 class="p-0 border-0 shadow-none"
               ></b-form-input>

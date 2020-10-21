@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar class="border-bottom">
+    <b-navbar variant="light" sticky class="border-bottom">
       <b-container>
         <nuxt-link to="/">
           <b-navbar-brand>Photo mini blog</b-navbar-brand>
