@@ -1,0 +1,18 @@
+projects:
+  photominiblog:
+    schemaPath: amplify/backend/api/photominiblog/build/schema.graphql
+    includes:
+      - assets/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: assets/graphql
+        region: ap-northeast-1
+        apiId: null
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-photominiblog-dev-80920-authRole",
+            "UnauthRoleArn": "arn:aws:iam::179899157289:role/amplify-photominiblog-dev-80920-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::179899157289:role/amplify-photominiblog-dev-80920-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-photominiblog-dev-80920-deployment",
+            "UnauthRoleName": "amplify-photominiblog-dev-80920-unauthRole",
+            "StackName": "amplify-photominiblog-dev-80920",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:179899157289:stack/amplify-photominiblog-dev-80920/6b3c9d40-13f2-11eb-a4ae-0eacdea392fe",
+            "AmplifyAppId": "d3kumhuhsgit35"
+        },
+        "categories": {
+            "auth": {
+                "auth": {}
+            }
+        }
+    }
+}
