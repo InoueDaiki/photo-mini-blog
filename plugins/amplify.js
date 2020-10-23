@@ -77,7 +77,7 @@ I18n.putVocabularies({
     [Translations.CONFIRM_TOTP_CODE]: 'TOTPコードを確認する',
     [Translations.CONFIRM]: '確認',
     [Translations.CREATE_ACCOUNT_TEXT]: 'アカウントを作成する',
-    [Translations.EMAIL_LABEL]: '電子メールアドレス *',
+    [Translations.EMAIL_LABEL]: 'メールアドレス *',
     [Translations.EMAIL_PLACEHOLDER]: 'メールアドレスを入力してください',
     [Translations.FORGOT_PASSWORD_TEXT]: 'パスワードをお忘れですか？',
     [Translations.LESS_THAN_TWO_MFA_VALUES_MESSAGE]:

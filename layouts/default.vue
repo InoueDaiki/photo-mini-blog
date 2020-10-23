@@ -26,10 +26,16 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { Auth } from 'aws-amplify'
+
 export default {
   methods: {
-    logout() {
-      alert('ログアウト')
+    ...mapMutations(['setUser']),
+    async logout() {
+      this.setUser(null)
+      await Auth.signOut()
+      this.$router.push('/login')
     },
   },
 }

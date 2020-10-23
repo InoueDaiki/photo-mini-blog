@@ -1,15 +1,14 @@
 {
-    "identityPoolName": "photominiblog03d7d6cf_identitypool_03d7d6cf",
+    "identityPoolName": "photominiblog209a69a6_identitypool_209a69a6",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "auth03d7d6cf",
-    "userPoolName": "photominiblog03d7d6cf_userpool_03d7d6cf",
+    "resourceNameTruncated": "photom209a69a6",
+    "userPoolName": "photominiblog209a69a6_userpool_209a69a6",
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OPTIONAL",
+    "mfaConfiguration": "OFF",
     "mfaTypes": [
-        "SMS Text Message",
-        "TOTP"
+        "SMS Text Message"
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
@@ -29,20 +28,11 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "auth03d7d6cf_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "photom209a69a6_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "useDefault": "manual",
+    "sharedId": "209a69a6",
+    "resourceName": "photominiblog209a69a6",
     "authSelections": "identityPoolAndUserPool",
-    "resourceName": "auth",
-    "thirdPartyAuth": false,
-    "usernameAttributes": [
-        "email"
-    ],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": "{}",
-    "hostedUI": false,
-    "userPoolGroupList": [],
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -55,9 +45,8 @@
             "Arn"
         ]
     },
-    "parentStack": {
-        "Ref": "AWS::StackId"
-    },
-    "permissions": [],
+    "useDefault": "default",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
     "dependsOn": []
 }

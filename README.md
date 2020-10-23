@@ -79,31 +79,10 @@ Using service: Cognito, provided by: awscloudformation
 
  The current configured provider is Amazon Cognito.
 
- Do you want to use the default authentication and security configuration? Manual configuration
- Select the authentication/authorization services that you want to use: User Sign-Up, Sign-In, connected with AWS IAM controls (Enables per-user Storage features for images or other content, Analytics, and more)
- Please provide a friendly name for your resource that will be used to label this category in the project: auth
- Please enter a name for your identity pool. photominiblog03d7d6cf_identitypool_03d7d6cf
- Allow unauthenticated logins? (Provides scoped down permissions that you can control via AWS IAM) No
- Do you want to enable 3rd party authentication providers in your identity pool? No
- Please provide a name for your user pool: photominiblog03d7d6cf_userpool_03d7d6cf
- Warning: you will not be able to edit these selections.
- How do you want users to be able to sign in? Email
- Do you want to add User Pool Groups? No
- Do you want to add an admin queries API? No
- Multifactor authentication (MFA) user login options: OPTIONAL (Individual users can use MFA)
- For user login, select the MFA types: SMS Text Message, Time-Based One-Time Password (TOTP)
- Please specify an SMS authentication message: Your authentication code is {####}
- Email based user registration/forgot password: Enabled (Requires per-user email entry at registration)
- Please specify an email verification subject: Your verification code
- Please specify an email verification message: Your verification code is {####}
- Do you want to override the default password policy for this User Pool? No
- Warning: you will not be able to edit these selections.
- What attributes are required for signing up? Email
- Specify the app's refresh token expiration period (in days): 30
- Do you want to specify the user attributes this app can read and write? No
- Do you want to enable any of the following capabilities?
- Do you want to use an OAuth flow? No
- Do you want to configure Lambda Triggers for Cognito? No
+ Do you want to use the default authentication and security configuration? Default configuration
+ Warning: you will not be able to edit these selections.     
+ How do you want users to be able to sign in? Username       
+ Do you want to configure advanced settings? No, I am done.
 ```
 
 ### ファイルストレージの追加

@@ -1,17 +1,17 @@
 {
-    "projectName": "PhotoMiniBlog",
-    "version": "3.0",
-    "frontend": "javascript",
-    "javascript": {
-        "framework": "none",
-        "config": {
-            "SourceDir": "assets",
-            "DistributionDir": "dist",
-            "BuildCommand": "npm.cmd run-script generate",
-            "StartCommand": "npm.cmd run-script start"
-        }
-    },
-    "providers": [
-        "awscloudformation"
-    ]
+  "projectName": "PhotoMiniBlog",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "none",
+    "config": {
+      "SourceDir": "assets",
+      "DistributionDir": "dist",
+      "BuildCommand": "npm.cmd run-script generate",
+      "StartCommand": "npm.cmd run-script start"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
 }
