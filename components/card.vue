@@ -2,7 +2,7 @@
   <b-card no-body class="mb-3">
     <b-card-body class="py-2">
       <b-card-text>
-        <strong>{{ owner }}</strong>
+        <strong>{{ username }}</strong>
       </b-card-text>
     </b-card-body>
 
@@ -11,7 +11,7 @@
     <b-card-body>
       <b-card-text>
         <div v-for="comment in comments" :key="comment.id">
-          <strong>{{ comment.owner }}</strong>
+          <strong>{{ comment.username }}</strong>
           {{ comment.content }} <br />
           <small>{{ comment.createdAt }}</small>
         </div>
@@ -44,7 +44,7 @@
 <script>
 export default {
   props: {
-    owner: {
+    username: {
       type: String,
       default: '',
     },

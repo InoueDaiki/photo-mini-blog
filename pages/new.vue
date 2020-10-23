@@ -30,17 +30,22 @@
     </b-col>
     <b-col cols="12" sm="6">
       <h3>プレビュー</h3>
-      <card :owner="owner" :image-url="imageUrl" :comments="comments"></card>
+      <card
+        :username="user.username"
+        :image-url="imageUrl"
+        :comments="comments"
+      ></card>
     </b-col>
   </b-row>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   middleware: ['auth'],
   data() {
     return {
-      owner: 'ユーザ名',
       form: {
         file: null,
         comment: '',
@@ -48,13 +53,14 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user']),
     imageUrl() {
       return this.form.file ? URL.createObjectURL(this.form.file) : ''
     },
     comments() {
       return [
         {
-          owner: this.owner,
+          username: this.user.username,
           content: this.form.comment,
           createdAt: new Date().toLocaleString(),
         },

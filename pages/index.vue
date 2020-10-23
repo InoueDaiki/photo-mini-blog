@@ -2,9 +2,9 @@
   <b-row align-h="center">
     <b-col cols="12" sm="6">
       <card
-        v-for="({ owner, imageUrl, comments }, i) in posts"
+        v-for="({ username, imageUrl, comments }, i) in posts"
         :key="i"
-        :owner="owner"
+        :username="username"
         :image-url="imageUrl"
         :comments="comments"
         @submit="(newComment) => onSubmit(i, newComment)"
@@ -14,24 +14,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   middleware: ['auth'],
   data() {
     return {
-      username: 'charlie',
       posts: Array(5)
         .fill()
         .map(() => ({
-          owner: 'Alice',
+          username: 'Alice',
           imageUrl: 'https://picsum.photos/200',
           comments: [
             {
-              owner: 'Alice',
+              username: 'Alice',
               content: 'コメント'.repeat(20),
               createdAt: new Date().toLocaleString(),
             },
             {
-              owner: 'Bob',
+              username: 'Bob',
               content: 'コメント'.repeat(20),
               createdAt: new Date().toLocaleString(),
             },
@@ -39,10 +40,13 @@ export default {
         })),
     }
   },
+  computed: {
+    ...mapState(['user']),
+  },
   methods: {
     onSubmit(i, newComment) {
       this.posts[i].comments.push({
-        owner: this.username,
+        username: this.user.username,
         content: newComment,
         createdAt: new Date().toLocaleString(),
       })
