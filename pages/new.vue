@@ -29,6 +29,7 @@
       </b-form>
     </b-col>
     <b-col cols="12" sm="6">
+      <h3>プレビュー</h3>
       <card :owner="owner" :image-url="imageUrl" :comments="comments"></card>
     </b-col>
   </b-row>
