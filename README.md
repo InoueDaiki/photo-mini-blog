@@ -85,18 +85,6 @@ Using service: Cognito, provided by: awscloudformation
  Do you want to configure advanced settings? No, I am done.
 ```
 
-### ファイルストレージの追加
-
-```
-$ amplify add storage
-? Please select from one of the below mentioned services: Content (Images, audio, video, etc.)
-? Please provide a friendly name for your resource that will be used to label this category in the project: fileStorage
-? Please provide bucket name: photominiblog0d65ef8274e84298a426b0b6955afc3e
-? Who should have access: Auth users only
-? What kind of access do you want for Authenticated users? create/update, read, delete
-? Do you want to add a Lambda Trigger for your S3 Bucket? No
-```
-
 ### GraphQL API の追加
 
 ```
@@ -104,7 +92,6 @@ $ amplify add api
 ? Please select from one of the below mentioned services: GraphQL
 ? Provide API name: photominiblog
 ? Choose the default authorization type for the API Amazon Cognito User Pool
-Use a Cognito user pool configured as a part of this project.
 ? Do you want to configure advanced settings for the GraphQL API No, I am done.
 ? Do you have an annotated GraphQL schema? No
 ? Choose a schema template: One-to-many relationship (e.g., “Blogs” with “Posts” and “Comments”)
@@ -137,6 +124,18 @@ $ amplify add codegen
 ```
 $ amplify codegen
 √ Generated GraphQL operations successfully and saved at assets\graphql
+```
+
+### ファイルストレージの追加
+
+```
+$ amplify add storage
+? Please select from one of the below mentioned services: Content (Images, audio, video, etc.)
+? Please provide a friendly name for your resource that will be used to label this category in the project: fileStorage
+? Please provide bucket name: photominiblog0d65ef8274e84298a426b0b6955afc3e
+? Who should have access: Auth users only
+? What kind of access do you want for Authenticated users? create/update, read, delete
+? Do you want to add a Lambda Trigger for your S3 Bucket? No
 ```
 
 ### バックエンド環境の更新

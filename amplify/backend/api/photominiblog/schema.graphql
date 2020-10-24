@@ -1,0 +1,34 @@
+type Post
+  @model
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "username"
+        operations: [create, delete, update]
+      }
+    ]
+  ) {
+  id: ID!
+  username: String!
+  s3key: String!
+  comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
+}
+
+type Comment
+  @model
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "username"
+        operations: [create, delete, update]
+      }
+    ]
+  )
+  @key(name: "byPost", fields: ["postID", "content"]) {
+  id: ID!
+  username: String!
+  postID: ID!
+  content: String!
+}
