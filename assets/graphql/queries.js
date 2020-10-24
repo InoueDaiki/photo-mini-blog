@@ -9,11 +9,10 @@ export const getPost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -36,11 +35,10 @@ export const listPosts = /* GraphQL */ `
         s3key
         comments {
           items {
-            id
-            username
             postID
-            content
             createdAt
+            username
+            content
             updatedAt
           }
           nextToken
@@ -53,30 +51,38 @@ export const listPosts = /* GraphQL */ `
   }
 `;
 export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      username
+  query GetComment($postID: ID!, $createdAt: AWSDateTime!) {
+    getComment(postID: $postID, createdAt: $createdAt) {
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
 `;
 export const listComments = /* GraphQL */ `
   query ListComments(
+    $postID: ID
+    $createdAt: ModelStringKeyConditionInput
     $filter: ModelCommentFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listComments(
+      postID: $postID
+      createdAt: $createdAt
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
       items {
-        id
-        username
         postID
-        content
         createdAt
+        username
+        content
         updatedAt
       }
       nextToken

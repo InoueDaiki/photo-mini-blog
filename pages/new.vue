@@ -5,7 +5,7 @@
         <b-form-group label="写真" label-cols="2" label-for="photo">
           <b-form-file
             id="photo"
-            v-model="form.file"
+            v-model="file"
             required
             accept="image/*"
             placeholder="選択されていません"
@@ -17,7 +17,7 @@
         <b-form-group label="コメント" label-cols="2" label-for="comment">
           <b-form-input
             id="comment"
-            v-model="form.comment"
+            v-model="comment"
             required
             placeholder="キャプションを入力..."
           ></b-form-input>
@@ -30,11 +30,7 @@
     </b-col>
     <b-col cols="12" sm="6">
       <h3>プレビュー</h3>
-      <card
-        :username="user.username"
-        :image-url="imageUrl"
-        :comments="comments"
-      ></card>
+      <card :post="post"></card>
     </b-col>
   </b-row>
 </template>
@@ -48,25 +44,26 @@ export default {
   middleware: ['auth'],
   data() {
     return {
-      form: {
-        file: null,
-        comment: '',
-      },
+      file: null,
+      comment: '',
     }
   },
   computed: {
     ...mapState(['user']),
-    imageUrl() {
-      return this.form.file ? URL.createObjectURL(this.form.file) : ''
-    },
-    comments() {
-      return [
-        {
-          username: this.user.username,
-          content: this.form.comment,
-          createdAt: new Date().toLocaleString(),
+    post() {
+      return {
+        username: this.user.username,
+        imageUrl: this.file ? URL.createObjectURL(this.file) : '',
+        comments: {
+          items: [
+            {
+              username: this.user.username,
+              content: this.comment,
+              createdAt: new Date().toLocaleString(),
+            },
+          ],
         },
-      ]
+      }
     },
   },
   methods: {
@@ -84,7 +81,7 @@ export default {
           input: {
             postID: response.data.createPost.id,
             username: this.user.username,
-            content: this.form.comment,
+            content: this.comment,
           },
         })
       )

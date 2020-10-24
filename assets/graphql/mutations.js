@@ -12,11 +12,10 @@ export const createPost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -37,11 +36,10 @@ export const updatePost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -62,11 +60,10 @@ export const deletePost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -82,11 +79,10 @@ export const createComment = /* GraphQL */ `
     $condition: ModelCommentConditionInput
   ) {
     createComment(input: $input, condition: $condition) {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
@@ -97,11 +93,10 @@ export const updateComment = /* GraphQL */ `
     $condition: ModelCommentConditionInput
   ) {
     updateComment(input: $input, condition: $condition) {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
@@ -112,11 +107,10 @@ export const deleteComment = /* GraphQL */ `
     $condition: ModelCommentConditionInput
   ) {
     deleteComment(input: $input, condition: $condition) {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }

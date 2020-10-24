@@ -9,11 +9,10 @@ export const onCreatePost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -31,11 +30,10 @@ export const onUpdatePost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -53,11 +51,10 @@ export const onDeletePost = /* GraphQL */ `
       s3key
       comments {
         items {
-          id
-          username
           postID
-          content
           createdAt
+          username
+          content
           updatedAt
         }
         nextToken
@@ -70,11 +67,10 @@ export const onDeletePost = /* GraphQL */ `
 export const onCreateComment = /* GraphQL */ `
   subscription OnCreateComment {
     onCreateComment {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
@@ -82,11 +78,10 @@ export const onCreateComment = /* GraphQL */ `
 export const onUpdateComment = /* GraphQL */ `
   subscription OnUpdateComment {
     onUpdateComment {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
@@ -94,11 +89,10 @@ export const onUpdateComment = /* GraphQL */ `
 export const onDeleteComment = /* GraphQL */ `
   subscription OnDeleteComment {
     onDeleteComment {
-      id
-      username
       postID
-      content
       createdAt
+      username
+      content
       updatedAt
     }
   }
