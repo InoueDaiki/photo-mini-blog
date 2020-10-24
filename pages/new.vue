@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12" sm="6">
-      <b-form @submit="onSubmit">
+      <b-form @submit.prevent="onSubmit">
         <b-form-group label="写真" label-cols="2" label-for="photo">
           <b-form-file
             id="photo"
@@ -41,6 +41,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import { API, graphqlOperation } from 'aws-amplify'
+import { createPost, createComment } from '@/assets/graphql/mutations'
 
 export default {
   middleware: ['auth'],
@@ -68,7 +70,24 @@ export default {
     },
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
+      const response = await API.graphql(
+        graphqlOperation(createPost, {
+          input: {
+            username: this.user.username,
+            s3key: 'https://picsum.photos/20',
+          },
+        })
+      )
+      await API.graphql(
+        graphqlOperation(createComment, {
+          input: {
+            postID: response.data.createPost.id,
+            username: this.user.username,
+            content: this.form.comment,
+          },
+        })
+      )
       this.$router.push('/')
     },
   },
