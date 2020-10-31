@@ -11,6 +11,7 @@
             placeholder="選択されていません"
             browse-text="ファイルを選択"
             drop-placeholder="ここにドロップ"
+            @input="onChangeFormFile"
           ></b-form-file>
         </b-form-group>
 
@@ -46,6 +47,7 @@ export default {
     return {
       file: null,
       comment: '',
+      imageURL: '',
     }
   },
   computed: {
@@ -53,7 +55,7 @@ export default {
     post() {
       return {
         username: this.user.username,
-        imageUrl: this.file ? URL.createObjectURL(this.file) : '',
+        imageUrl: this.imageURL,
         comments: {
           items: [
             {
@@ -67,6 +69,9 @@ export default {
     },
   },
   methods: {
+    onChangeFormFile(file) {
+      if (file) this.imageURL = URL.createObjectURL(file)
+    },
     async onSubmit() {
       const response = await API.graphql(
         graphqlOperation(createPost, {
