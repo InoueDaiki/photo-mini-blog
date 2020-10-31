@@ -45,13 +45,19 @@ export default {
       await this.fetchPosts()
     },
     async fetchPosts() {
-      const response = await API.graphql(graphqlOperation(listPosts))
-      this.nextToken = response.data.listPosts.nextToken
-      this.posts = await Promise.all(
-        response.data.listPosts.items.map(async (e) => {
-          e.imageUrl = await Storage.get(e.s3key)
-          return e
+      const response = await API.graphql(
+        graphqlOperation(listPosts, {
+          limit: 1000,
         })
+      )
+      this.posts = await Promise.all(
+        response.data.listPosts.items
+          .sort((e) => e.createdAt)
+          .reverse()
+          .map(async (e) => {
+            e.imageUrl = await Storage.get(e.s3key)
+            return e
+          })
       )
     },
   },
