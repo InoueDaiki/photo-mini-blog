@@ -2,7 +2,7 @@
   <b-row>
     <b-col cols="12" sm="6">
       <b-form @submit.prevent="onSubmit">
-        <b-form-group label="写真" label-cols="2" label-for="photo">
+        <b-form-group label="写真" label-cols="3" label-for="photo">
           <b-form-file
             id="photo"
             v-model="file"
@@ -15,7 +15,7 @@
           ></b-form-file>
         </b-form-group>
 
-        <b-form-group label="コメント" label-cols="2" label-for="comment">
+        <b-form-group label="コメント" label-cols="3" label-for="comment">
           <b-form-input
             id="comment"
             v-model="comment"

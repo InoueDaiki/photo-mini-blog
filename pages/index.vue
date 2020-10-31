@@ -6,6 +6,7 @@
         :key="i"
         :post="post"
         @submit="onSubmit"
+        class="mb-3"
       ></card>
     </b-col>
   </b-row>
@@ -22,7 +23,6 @@ export default {
   data() {
     return {
       posts: [],
-      nextToken: null,
     }
   },
   computed: {
