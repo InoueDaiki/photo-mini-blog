@@ -89,6 +89,8 @@ sw.*
 # Vim swap files
 *.swp
 
+.vscode/
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
