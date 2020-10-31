@@ -38,7 +38,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { createPost, createComment } from '@/assets/graphql/mutations'
 
 export default {
@@ -73,11 +73,13 @@ export default {
       if (file) this.imageURL = URL.createObjectURL(file)
     },
     async onSubmit() {
+      const s3key = this.$uuid()
+      await Storage.put(s3key, this.file)
       const response = await API.graphql(
         graphqlOperation(createPost, {
           input: {
             username: this.user.username,
-            s3key: 'https://picsum.photos/20',
+            s3key,
           },
         })
       )

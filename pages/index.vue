@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { listPosts } from '@/assets/graphql/queries'
 import { createComment } from '~/assets/graphql/mutations'
 
@@ -47,10 +47,12 @@ export default {
     async fetchPosts() {
       const response = await API.graphql(graphqlOperation(listPosts))
       this.nextToken = response.data.listPosts.nextToken
-      this.posts = response.data.listPosts.items.map((e) => {
-        e.imageUrl = e.s3key
-        return e
-      })
+      this.posts = await Promise.all(
+        response.data.listPosts.items.map(async (e) => {
+          e.imageUrl = await Storage.get(e.s3key)
+          return e
+        })
+      )
     },
   },
 }
