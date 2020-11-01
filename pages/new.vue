@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   data() {
     return {
@@ -48,15 +46,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user']),
     post() {
       return {
-        username: this.user.username,
+        username: 'Alice',
         imageUrl: this.imageURL,
         comments: {
           items: [
             {
-              username: this.user.username,
+              username: 'Alice',
               content: this.comment,
               createdAt: new Date().toLocaleString(),
             },
