@@ -6,6 +6,7 @@
         :key="i"
         :post="post"
         class="mb-3"
+        @submit="onSubmit"
       ></card>
     </b-col>
   </b-row>
@@ -22,6 +23,11 @@ export default {
     await this.fetchPosts()
   },
   methods: {
+    async onSubmit(postID, content) {
+      // TODO: use GraphQL
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await this.fetchPosts()
+    },
     async fetchPosts() {
       // TODO: use GraphQL
       await new Promise((resolve) => setTimeout(resolve, 1000))
