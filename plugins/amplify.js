@@ -1,8 +1,10 @@
-import Amplify, { I18n } from 'aws-amplify'
+import Amplify, { Storage, I18n } from 'aws-amplify'
 import { Translations } from '@aws-amplify/ui-components'
 import awsExports from '@/assets/aws-exports'
 
 Amplify.configure(awsExports)
+
+Storage.configure({ level: 'public' })
 
 I18n.putVocabularies({
   ja: {
