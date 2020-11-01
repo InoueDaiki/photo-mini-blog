@@ -38,7 +38,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { createPost, createComment } from '@/assets/graphql/mutations'
 
 export default {
@@ -74,8 +74,7 @@ export default {
     },
     async onSubmit() {
       const s3key = this.$uuid()
-      // TODO: use S3
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await Storage.put(s3key, this.file)
       const response = await API.graphql(
         graphqlOperation(createPost, {
           input: {
