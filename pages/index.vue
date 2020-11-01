@@ -5,8 +5,8 @@
         v-for="(post, i) in posts"
         :key="i"
         :post="post"
-        @submit="onSubmit"
         class="mb-3"
+        @submit="onSubmit"
       ></card>
     </b-col>
   </b-row>
