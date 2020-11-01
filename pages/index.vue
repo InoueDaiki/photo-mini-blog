@@ -13,11 +13,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
-import { listPosts } from '@/assets/graphql/queries'
-import { createComment } from '~/assets/graphql/mutations'
-
 export default {
   middleware: ['auth'],
   data() {
@@ -25,46 +20,40 @@ export default {
       posts: [],
     }
   },
-  computed: {
-    ...mapState(['user']),
-  },
   async mounted() {
     await this.fetchPosts()
   },
   methods: {
     async onSubmit(postID, content) {
-      await API.graphql(
-        graphqlOperation(createComment, {
-          input: {
-            postID,
-            content,
-            username: this.user.username,
-          },
-        })
-      )
+      // TODO: use GraphQL
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       await this.fetchPosts()
     },
     async fetchPosts() {
-      const response = await API.graphql(
-        graphqlOperation(listPosts, {
-          limit: 1000,
-        })
-      )
-      this.posts = await Promise.all(
-        response.data.listPosts.items
-          .sort((post) => post.createdAt)
-          .reverse()
-          .map(async (post) => {
-            post.comments.items = post.comments.items.map((comment) => {
-              comment.createdAt = new Date(comment.createdAt).toLocaleString()
-              return comment
-            })
-            // TODO: use S3
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-            post.imageUrl = 'https://picsum.photos/400/300'
-            return post
-          })
-      )
+      // TODO: use GraphQL
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      this.posts = [
+        {
+          id: 'UUID will be here',
+          username: 'Alice',
+          s3key: 'UUID will be here',
+          imageUrl: 'https://picsum.photos/400/300',
+          comments: {
+            items: [
+              {
+                createdAt: new Date().toLocaleString(),
+                username: 'Alice',
+                content: 'First comment',
+              },
+              {
+                createdAt: new Date().toLocaleString(),
+                username: 'Bob',
+                content: 'Seccond comment',
+              },
+            ],
+          },
+        },
+      ]
     },
   },
 }
