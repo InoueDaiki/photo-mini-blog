@@ -10,11 +10,6 @@
       "StackName": "amplify-photominiblog-dev-81715",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:179899157289:stack/amplify-photominiblog-dev-81715/e47468c0-1585-11eb-9443-0ae3ffe7265e",
       "AmplifyAppId": "d12iaiv9ttf66k"
-    },
-    "categories": {
-      "auth": {
-        "photominiblog209a69a6": {}
-      }
     }
   }
 }
