@@ -14,7 +14,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation, Storage } from 'aws-amplify'
+import { API, graphqlOperation } from 'aws-amplify'
 import { listPosts } from '@/assets/graphql/queries'
 import { createComment } from '~/assets/graphql/mutations'
 
@@ -59,7 +59,9 @@ export default {
               comment.createdAt = new Date(comment.createdAt).toLocaleString()
               return comment
             })
-            post.imageUrl = await Storage.get(post.s3key)
+            // TODO: use S3
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            post.imageUrl = 'https://picsum.photos/400/300'
             return post
           })
       )
