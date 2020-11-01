@@ -1,7 +1,7 @@
 <template>
   <b-row align-h="center">
     <b-col cols="12" sm="6">
-      {{ posts }}
+      <card v-for="(post, i) in posts" :key="i" :post="post"></card>
     </b-col>
   </b-row>
 </template>
