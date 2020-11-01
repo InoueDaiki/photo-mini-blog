@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12" sm="6">
-      <b-form>
+      <b-form @submit.prevent="onSubmit">
         <b-form-group label="写真" label-cols="3" label-for="photo">
           <b-form-file
             id="photo"
@@ -23,6 +23,10 @@
             placeholder="キャプションを入力..."
           ></b-form-input>
         </b-form-group>
+
+        <div class="text-right">
+          <b-button type="submit" variant="primary">シェア</b-button>
+        </div>
       </b-form>
     </b-col>
     <b-col cols="12" sm="6">
@@ -61,6 +65,11 @@ export default {
   methods: {
     onChangeFormFile(file) {
       if (file) this.imageURL = URL.createObjectURL(file)
+    },
+    async onSubmit() {
+      // TODO: use GraphQL
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      this.$router.push('/')
     },
   },
 }
