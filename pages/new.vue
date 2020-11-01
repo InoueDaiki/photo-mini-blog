@@ -73,7 +73,7 @@ export default {
       if (file) this.imageURL = URL.createObjectURL(file)
     },
     async onSubmit() {
-      const s3key = this.$uuid()
+      const s3key = 'UUID will be here'
       // TODO: use S3
       await new Promise((resolve) => setTimeout(resolve, 1000))
       const response = await API.graphql(
