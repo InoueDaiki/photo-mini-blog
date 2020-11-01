@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "photominiblog209a69a6": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
