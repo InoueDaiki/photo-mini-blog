@@ -1,7 +1,12 @@
 <template>
   <b-row align-h="center">
     <b-col cols="12" sm="6">
-      <card v-for="(post, i) in posts" :key="i" :post="post"></card>
+      <card
+        v-for="(post, i) in posts"
+        :key="i"
+        :post="post"
+        class="mb-3"
+      ></card>
     </b-col>
   </b-row>
 </template>
