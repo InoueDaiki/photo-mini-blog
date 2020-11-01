@@ -14,6 +14,15 @@
             @input="onChangeFormFile"
           ></b-form-file>
         </b-form-group>
+
+        <b-form-group label="コメント" label-cols="3" label-for="comment">
+          <b-form-input
+            id="comment"
+            v-model="comment"
+            required
+            placeholder="キャプションを入力..."
+          ></b-form-input>
+        </b-form-group>
       </b-form>
     </b-col>
     <b-col cols="12" sm="6">
@@ -28,6 +37,7 @@ export default {
   data() {
     return {
       file: null,
+      comment: '',
       imageURL: '',
     }
   },
@@ -40,7 +50,7 @@ export default {
           items: [
             {
               username: 'Alice',
-              content: 'Caption will be here',
+              content: this.comment,
               createdAt: new Date().toLocaleString(),
             },
           ],
