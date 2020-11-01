@@ -15,17 +15,7 @@
 export default {
   data() {
     return {
-      posts: [],
-    }
-  },
-  async mounted() {
-    await this.fetchPosts()
-  },
-  methods: {
-    async fetchPosts() {
-      // TODO: use GraphQL
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      this.posts = [
+      posts: [
         {
           id: 'UUID will be here',
           username: 'Alice',
@@ -46,8 +36,8 @@ export default {
             ],
           },
         },
-      ]
-    },
+      ],
+    }
   },
 }
 </script>
