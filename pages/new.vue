@@ -1,20 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12" sm="6">
-      <b-form>
-        <b-form-group label="写真" label-cols="3" label-for="photo">
-          <b-form-file
-            id="photo"
-            v-model="file"
-            required
-            accept="image/*"
-            placeholder="選択されていません"
-            browse-text="ファイルを選択"
-            drop-placeholder="ここにドロップ"
-            @input="onChangeFormFile"
-          ></b-form-file>
-        </b-form-group>
-      </b-form>
+      <b-form>フォーム</b-form>
     </b-col>
     <b-col cols="12" sm="6">
       <h3>プレビュー</h3>
@@ -27,8 +14,7 @@
 export default {
   data() {
     return {
-      file: null,
-      imageURL: '',
+      imageURL: 'https://picsum.photos/400/300',
     }
   },
   computed: {
@@ -46,11 +32,6 @@ export default {
           ],
         },
       }
-    },
-  },
-  methods: {
-    onChangeFormFile(file) {
-      if (file) this.imageURL = URL.createObjectURL(file)
     },
   },
 }
