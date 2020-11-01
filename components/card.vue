@@ -1,5 +1,7 @@
 <template>
-  <b-card :img-src="post.imageUrl"></b-card>
+  <b-card>
+    {{ post }}
+  </b-card>
 </template>
 
 <script>
