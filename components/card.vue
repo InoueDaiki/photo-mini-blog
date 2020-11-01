@@ -7,7 +7,7 @@
     </div>
 
     <template #footer>
-      <b-form @submit.prevent="onSubmit">
+      <b-form>
         <b-input-group>
           <b-form-input
             v-model="newComment"
@@ -41,12 +41,6 @@ export default {
     return {
       newComment: '',
     }
-  },
-  methods: {
-    onSubmit() {
-      this.$emit('submit', this.post.id, this.newComment)
-      this.newComment = ''
-    },
   },
 }
 </script>
