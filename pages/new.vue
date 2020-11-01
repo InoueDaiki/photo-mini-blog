@@ -38,6 +38,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import { API, graphqlOperation } from 'aws-amplify'
+import { createPost, createComment } from '@/assets/graphql/mutations'
 
 export default {
   middleware: ['auth'],
@@ -71,8 +73,26 @@ export default {
       if (file) this.imageURL = URL.createObjectURL(file)
     },
     async onSubmit() {
-      // TODO: use GraphQL
+      const s3key = 'UUID will be here'
+      // TODO: use S3
       await new Promise((resolve) => setTimeout(resolve, 1000))
+      const response = await API.graphql(
+        graphqlOperation(createPost, {
+          input: {
+            username: this.user.username,
+            s3key,
+          },
+        })
+      )
+      await API.graphql(
+        graphqlOperation(createComment, {
+          input: {
+            postID: response.data.createPost.id,
+            username: this.user.username,
+            content: this.comment,
+          },
+        })
+      )
       this.$router.push('/')
     },
   },
