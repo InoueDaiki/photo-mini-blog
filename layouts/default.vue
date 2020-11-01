@@ -12,6 +12,10 @@
           <b-navbar-nav>
             <b-nav-item to="/new">投稿する</b-nav-item>
           </b-navbar-nav>
+
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item @click="logout">ログアウト</b-nav-item>
+          </b-navbar-nav>
         </b-collapse>
       </b-container>
     </b-navbar>
@@ -22,5 +26,17 @@
 </template>
 
 <script>
-export default {}
+import { mapMutations } from 'vuex'
+import { Auth } from 'aws-amplify'
+
+export default {
+  methods: {
+    ...mapMutations(['setUser']),
+    async logout() {
+      this.setUser(null)
+      await Auth.signOut()
+      this.$router.push('/login')
+    },
+  },
+}
 </script>
