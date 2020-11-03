@@ -5,8 +5,8 @@
         v-for="(post, i) in posts"
         :key="i"
         :post="post"
-        @submit="onSubmit"
         class="mb-3"
+        @submit="onSubmit"
       ></card>
     </b-col>
   </b-row>
@@ -52,11 +52,15 @@ export default {
       )
       this.posts = await Promise.all(
         response.data.listPosts.items
-          .sort((e) => e.createdAt)
+          .sort((post) => post.createdAt)
           .reverse()
-          .map(async (e) => {
-            e.imageUrl = await Storage.get(e.s3key)
-            return e
+          .map(async (post) => {
+            post.comments.items = post.comments.items.map((comment) => {
+              comment.createdAt = new Date(comment.createdAt).toLocaleString()
+              return comment
+            })
+            post.imageUrl = await Storage.get(post.s3key)
+            return post
           })
       )
     },
