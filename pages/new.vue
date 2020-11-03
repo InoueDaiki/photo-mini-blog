@@ -2,7 +2,7 @@
   <b-row>
     <b-col cols="12" sm="6">
       <b-form @submit.prevent="onSubmit">
-        <b-form-group label="写真" label-cols="2" label-for="photo">
+        <b-form-group label="写真" label-cols="3" label-for="photo">
           <b-form-file
             id="photo"
             v-model="file"
@@ -11,10 +11,11 @@
             placeholder="選択されていません"
             browse-text="ファイルを選択"
             drop-placeholder="ここにドロップ"
+            @input="onChangeFormFile"
           ></b-form-file>
         </b-form-group>
 
-        <b-form-group label="コメント" label-cols="2" label-for="comment">
+        <b-form-group label="コメント" label-cols="3" label-for="comment">
           <b-form-input
             id="comment"
             v-model="comment"
@@ -37,7 +38,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { createPost, createComment } from '@/assets/graphql/mutations'
 
 export default {
@@ -46,6 +47,7 @@ export default {
     return {
       file: null,
       comment: '',
+      imageURL: '',
     }
   },
   computed: {
@@ -53,7 +55,7 @@ export default {
     post() {
       return {
         username: this.user.username,
-        imageUrl: this.file ? URL.createObjectURL(this.file) : '',
+        imageUrl: this.imageURL,
         comments: {
           items: [
             {
@@ -67,12 +69,17 @@ export default {
     },
   },
   methods: {
+    onChangeFormFile(file) {
+      if (file) this.imageURL = URL.createObjectURL(file)
+    },
     async onSubmit() {
+      const s3key = this.$uuid()
+      await Storage.put(s3key, this.file)
       const response = await API.graphql(
         graphqlOperation(createPost, {
           input: {
             username: this.user.username,
-            s3key: 'https://picsum.photos/20',
+            s3key,
           },
         })
       )

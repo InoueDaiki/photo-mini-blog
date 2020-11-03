@@ -6,6 +6,7 @@
         :key="i"
         :post="post"
         @submit="onSubmit"
+        class="mb-3"
       ></card>
     </b-col>
   </b-row>
@@ -13,7 +14,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation, Storage } from 'aws-amplify'
 import { listPosts } from '@/assets/graphql/queries'
 import { createComment } from '~/assets/graphql/mutations'
 
@@ -22,7 +23,6 @@ export default {
   data() {
     return {
       posts: [],
-      nextToken: null,
     }
   },
   computed: {
@@ -45,12 +45,20 @@ export default {
       await this.fetchPosts()
     },
     async fetchPosts() {
-      const response = await API.graphql(graphqlOperation(listPosts))
-      this.nextToken = response.data.listPosts.nextToken
-      this.posts = response.data.listPosts.items.map((e) => {
-        e.imageUrl = e.s3key
-        return e
-      })
+      const response = await API.graphql(
+        graphqlOperation(listPosts, {
+          limit: 1000,
+        })
+      )
+      this.posts = await Promise.all(
+        response.data.listPosts.items
+          .sort((e) => e.createdAt)
+          .reverse()
+          .map(async (e) => {
+            e.imageUrl = await Storage.get(e.s3key)
+            return e
+          })
+      )
     },
   },
 }

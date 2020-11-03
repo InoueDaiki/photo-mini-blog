@@ -4,7 +4,7 @@ import awsExports from '@/assets/aws-exports'
 
 Amplify.configure(awsExports)
 
-Storage.configure({ level: 'protected' })
+Storage.configure({ level: 'public' })
 
 I18n.putVocabularies({
   ja: {
