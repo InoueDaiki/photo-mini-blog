@@ -25,7 +25,7 @@
     "@aws-amplify/ui-vue": "^0.3.2",
     "aws-amplify": "^3.3.18",
     "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.18.1",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.6"
   },
